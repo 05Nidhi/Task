@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Programming</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active" href="#scrollspyHeading1"><a>Home</a></li>
+      <li><a href="#scrollspyHeading2">About us</a></li>
+      <li><a href="#scrollspyHeading3">Contact us</a></li>
+      <li><a id="scrollspyHeading4"></a></a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><button type="button" class="btn btn-primary' btn-round" data-toggle="modal" data-target="#loginModal">login</button></li>
+    </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><button type="button" class="btn btn-primary btn-round" data-toggle="modal" data-target="#signupModal">signup</button>
+                <!-- signup -->
+                <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header border-bottom-0">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                    <div class="form-title text-center">
+                        <h3>Signup</h3>
+                    </div>
+                    <div class="d-flex flex-column text-center">
+                        <form class="was-validated">
+                          <div class="form-group">
+                            <h4 class="text-left">Name</h4>
+                            <input type="email" class="form-control is-valid" id="name1"placeholder="Your Name..." required>
+                        </div>
+                        <div class="form-group">
+                            <h4 class="text-left">Email</h4>
+                            <input type="email" class="form-control is-valid" id="email1"placeholder="Your email address..." required>
+                        </div>
+                        <div class="form-group">
+                            <h4 class="text-left">Password</h4>
+                            <input type="password" class="form-control is-valid" id="pwd1" placeholder="Your password..." required>
+                        </div>
+                        <div class="form-group">
+                            <h4 class="text-left">Re-enter Password</h4>
+                            <input type="password" class="form-control is-valid" id="repwd1" placeholder="Re-enter Your password..." required>
+                        </div>
+                        <button type="button" class="btn btn-primary btn-block btn-round" data-mdb-dismiss="modal" data-dismiss="modal" onclick="sign_up()">signup</button>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </ul>
+  </div>
+</nav>
+
+<!-- Home -->
+<div data-bs-spy="scroll"  data-bs-offset="0" class="scrollspy-example" tabindex="0">
+<br>
+<br>
+<h2 class="text-center" id="scrollspyHeading1">Welcome to programming</h2>
+<p class="text-center">
+    Confusing? Let us understand the definition deeply.
+
+    <br>“Instruct the computer”: this basically means that you provide the computer a set of instructions that are written in a language that the computer can understand. The instructions could be of various types. For example:
+    <br>Adding 2 numbers,
+    <br>Rounding off a number, etc.
+    <br>Just like we humans can understand a few languages (English, Spanish, <br>Mandarin, French, etc.), so is the case with computers. Computers <br>understand instructions that are written in a specific syntactical <br>form called a programming language.
+    
+    <br>“Perform various tasks”: the tasks could be simple ones like we <br>discussed above (adding 2 numbers, rounding off a number) or complex <br>ones which may involve a sequence of multiple instructions. For <br>example:
+    
+    <br>Calculating simple interest, given principal, rate and time.
+    <br>Calculating the average return on a stock over the last 5 years.
+    <br>The above 2 tasks require complex calculations. They cannot usually be <br>expressed in simple instructions like adding 2 numbers, etc.
+    
+    <br>Hence, in summary, Programming is a way to tell computers to do a specific task.
+</p>
+</div>
+
+<!-- About us -->
+<br>
+<br>
+<h2 class="text-center text-bg-primary p-3 " id="scrollspyHeading2">About us</h2>
+
+<p class="text-center bg-primary text-white">webdew has done a commendable job of personifying their team and organization while also narrating their story. 
+
+    <br>The top of the page features a friendly image of the company's <br>employees, and as you scroll, you will find their values, goals, <br>journey, details about the founders, the team, and the culture. Along <br>the way, webdew continues to share photos of its executives and all <br>other team members, completely humanizing its brand by putting various <br>faces to its name. 
+    
+    <br>The organization has also done a fabulous job of establishing trust by <br>including elements of social proof (i.e., media, client testimonials, <br>partner logos, etc.).</p>
+
+
+<!-- Contact-us -->
+<br>
+<br>
+<h3 class="text-center" id="scrollspyHeading3">Contact us</h3>
+<p class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-phone" viewBox="0 0 16 16">
+    <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z"/>
+    <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+  </svg> +91 xx xxx</p>
+<p class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+  </svg> conbtact_programming@gmail.com</p>
+<p class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+    <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+  </svg> veda complex,near BOI,Indore(M.P)</p>
+
+<br>
+<br>
+<!-- footer -->
+<div class="footer-copyright text-center bg-primary text-white" id="scrollspyHeading4">© 2020 Copyright:
+    MDBootstrap.com
+  </div>
+
+<!-- login -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header border-bottom-0">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-title text-center">
+            <h3>login</h3>
+          </div>
+          <div class="d-flex flex-column text-center">
+            <form class="was-validated">
+              <div class="form-group">
+                <h4 class="text-left">Name</h4>
+                <input type="email" class="form-control is-valid" id="name2"placeholder="Your Name..." required>
+            </div>
+              <div class="form-group">
+                <h4 class="text-left">Email</h4>
+                <input type="email" class="form-control is-valid" id="email2"placeholder="Your email address..." required>
+              </div>
+              <div class="form-group">
+                <h4 class="text-left">Password</h4>
+                <input type="password" class="form-control is-valid" id="pwd2" placeholder="Your password..." required>
+              </div>
+              <button type="button" class="btn btn-primary btn-block btn-round" data-dismiss="modal" onclick="login()" >login</button>
+            </form>
+          </div>
+          </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <div class="signup-section">Not a member yet? <button type="button" class="btn btn-primary btn-round" data-toggle="modal" data-target="#signupModal" onclick="document.getElementById('loginModal').style.display='none'">signup</button></div>
+          
+        </div>
+    </div>
+  </div>
+
+<!-- local Stroage -->
+<script>
+  var a=document.getElementById("email")
+  var b=document.getElementById("pwd1")
+  var c=document.getElementById("repwd1")
+  let arr=[]
+  // document.addEventListener("click",sign_up)
+  function sign_up(){
+    if(get!=null){
+      // alert("login sucessfull")
+      for(let i=0;i<=get.length;i++){
+        if(get[i].email == a.value){
+          alert("email already exist");
+          break
+        }
+      }
+    }
+    else{
+      if(c.value==b.value){
+      let main={
+        "email":a.value,
+        "pwd":b.value
+      }
+      arr.push(main)
+      alert("signup sucessfull")
+      localStorage.setItem("data",JSON.stringify(arr))
+      // sessionStorage.setItem("sdata",JSON.stringify(arr))
+    }
+    else{
+      alert("entered wrong passward")
+    }
+    } 
+  }
+  // var x=document.getElementById("email2")
+  // var y=document.getElementById("pwd2")
+  // var z=document.getElementById("name2")
+
+
+  var get=JSON.parse(localStorage.getItem("data"))
+  function login(){
+  var x=document.getElementById("email2")
+  var y=document.getElementById("pwd2")
+  var z=document.getElementById("name2")
+    if(get!=null){
+      // alert("login sucessfull")
+      for(let i=0;i<=get.length;i++){
+        if(get[i].email ==x.value){
+          if(get[i].pwd ==y.value){
+            alert("login sucessfull");
+            // window.location.href="page2.html"
+            sessionStorage.setItem("sdata",JSON.stringify(z.value))
+             window.location.href="page2.html"
+            // <a href="page2.html"></a>
+          }
+          else{
+            alert("enter wrong mail or password");
+          }
+        }
+      }
+    }
+    
+  }
+
+    
+    // localStorage.setItem(a.value,b.value)
+</script>
+
+
+</body>
+</html>
