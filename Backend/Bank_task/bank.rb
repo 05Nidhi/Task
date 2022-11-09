@@ -7,8 +7,11 @@ require_relative 'sigin'
 require_relative 'register'
 # Code start here
 class Bank
+  # @amount = 0
+
   include Sigin
   include Register
+
   def details
     loop do
       puts '---------------Select your desired option----------------'
@@ -16,19 +19,22 @@ class Bank
       puts '2. Sign_in '
       puts '3. Exit'
       print 'Enter your option: '
-      a = gets.chomp
-      case a
-      when '1'
-        register
-        break
-      when '2'
-        sigin
-        break
-      when '3'
-        break
-      else
-        puts 'Alert,enter correct option'
-      end
+      option = gets.chomp
+      choose(option)
+      break
+    end
+  end
+
+  def choose(option)
+    case option
+    when '1'
+      register
+    when '2'
+      @amount = 0
+      sigin
+    else
+      puts 'Exit'
+      exit
     end
   end
 end

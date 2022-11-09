@@ -2,25 +2,37 @@
 
 # Code start here
 module Sigin
+  # @amount = 0
   def sigin
-    @@table = CSV.read('data.csv', headers: true)
+    @table = CSV.read('data.csv', headers: true)
     print 'Enter Your registered Email id: '
-    @@email1 = gets.chomp
-    @@table.find do |row|
-      # byebug
-      CSV.open('data.csv', 'a+') do |csv|
-        if row['Email'] == @@email1
-          print 'Enter yor passward: '
-          pswrd = gets.chomp
-          withdraw_deposite
-        end
-        break
-      end
-    end
+    @email1 = gets.chomp
+    mail_check
     puts 'Entered wrong mail..........'
   end
 
-  def withdraw_deposite # rubocop:disable Metrics/MethodLength
+  def mail_check
+    @table.find do |row|
+      next if row['Email'] == @email1
+
+      print 'Enter yor passward: '
+      pswrd = gets.chomp
+      passward_validation(pswrd)
+    end
+  end
+
+  def passward_validation(pswrd)
+    @table.find do |row|
+      if row['passward'] == pswrd
+        withdraw_deposite
+        # break
+      else
+        puts 'wrong passward'
+      end
+    end
+  end
+
+  def withdraw_deposite
     while 2 < 4
       puts '---------------Select your desired option----------------'
       puts ' 1. Withdraw'
@@ -28,62 +40,47 @@ module Sigin
       puts ' 3. Check balance'
       puts ' 4. Exit'
       print ' Enter your option: '
-      option = gets.chomp
-
-      case option
-      when '1'
-        print 'Enter your Withdrawal ammount: '
-        withdraw = gets.chomp.to_i
-        @@table.find do |row|
-          if row['Email'] == @@email1 && row['amount'].to_i<withdraw
-            puts 'you dont have sufficient data-----------'
-            break
-          else
-            withdraw(withdraw)
-          end
-        end
-      when '2'
-        print 'Enter amount you want to Deposite: '
-        deposite = gets.chomp.to_i
-        deposite(deposite)
-      when '3'
-        @@table.find do |row|
-          if row['Email'] == @@email1
-            puts "Amount in your account is : #{row['amount']}"
-            break
-          end
-        end
-      when '4'
-        puts 'Exit'
-        break
-      else
-        puts 'Alert,enter correct option'
-      end
+      input_option
+      # exit
     end
   end
 
-  def withdraw(withdraw)
-    CSV.open('data.csv', 'a+') do |csv|
-      @@table.find do |row|
-        if row['Email'] == @@email1
-          row['amount'] = row['amount'].to_i - withdraw
-          puts "your left over amount: #{row['amount']}"
-          csv << row
-        end
-      end
+  def input_option
+    opt = gets.chomp
+    option(opt)
+  end
+
+  def option(opt)
+    case opt
+    when '1'
+      withdraw
+    when '2'
+      deposite
+    when '3'
+      amountt
+    else
+      exit
     end
   end
 
-  def deposite(deposite)
-    CSV.open('data.csv', 'a+') do |csv|
-      @@table.find do |row|
-        if row['Email'] == @@email1
-          a = row['amount'].to_i + deposite
-          byebug
-          puts row['amount']=a
-          # csv << row
-        end
-      end
+  def withdraw
+    print 'Enter your Withdrawal ammount: '
+    b = gets.chomp.to_i
+    if @amount < b
+      puts "!!!!!you didn't have sufficient amount!!!!!"
+    else
+      @amount -= b
     end
+  end
+
+  def deposite
+    print 'Enter amount you want to Deposite: '
+    a = gets.chomp.to_i
+
+    @amount += a
+  end
+
+  def amountt
+    puts "your balance: #{@amount}"
   end
 end
