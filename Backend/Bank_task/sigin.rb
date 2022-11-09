@@ -8,31 +8,22 @@ module Sigin
     print 'Enter Your registered Email id: '
     @email1 = gets.chomp
     mail_check
-    puts 'Entered wrong mail..........'
+    puts 'Entered mail is not registered..........'
   end
 
   def mail_check
-    @table.find do |row|
-      next if row['Email'] == @email1
+    data = CSV.read('data.csv', headers: true)
+    data.find do |row|
+      next unless row['Email'] == @email1
 
-      print 'Enter yor passward: '
+      print 'Enter your passward: '
       pswrd = gets.chomp
-      passward_validation(pswrd)
+      withdraw_deposite(pswrd)
+      exit
     end
   end
 
-  def passward_validation(pswrd)
-    @table.find do |row|
-      if row['passward'] == pswrd
-        withdraw_deposite
-        # break
-      else
-        puts 'wrong passward'
-      end
-    end
-  end
-
-  def withdraw_deposite
+  def withdraw_deposite(*)
     while 2 < 4
       puts '---------------Select your desired option----------------'
       puts ' 1. Withdraw'
@@ -52,14 +43,14 @@ module Sigin
 
   def option(opt)
     case opt
-    when '1'
-      withdraw
-    when '2'
-      deposite
+    when '1' then withdraw
+    when '2' then deposite
     when '3'
       amountt
-    else
+    when '4'
       exit
+    else
+      puts 'entered wrong option----------------'
     end
   end
 
@@ -68,6 +59,8 @@ module Sigin
     b = gets.chomp.to_i
     if @amount < b
       puts "!!!!!you didn't have sufficient amount!!!!!"
+    elsif b.negative?
+      puts '!!!!!!Please enter valid amount!!!!!!'
     else
       @amount -= b
     end
@@ -76,8 +69,11 @@ module Sigin
   def deposite
     print 'Enter amount you want to Deposite: '
     a = gets.chomp.to_i
-
-    @amount += a
+    if a.negative?
+      puts '!!!!!Please enter valid amount!!!!!!'
+    else
+      @amount += a
+    end
   end
 
   def amountt
